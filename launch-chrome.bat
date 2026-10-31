@@ -20,11 +20,23 @@ if %CHROME_PATH%=="" (
     exit /b 1
 )
 
-echo Starting Chrome on port 9222...
-start "" %CHROME_PATH% --remote-debugging-port=9222 "https://academy.dadb.com"
+tasklist /fi "imagename eq chrome.exe" 2>nul | findstr /i "chrome.exe" >nul
+if %ERRORLEVEL% equ 0 (
+    echo [NOTE] Chrome is currently running.
+    echo In order for port 9222 to activate, all existing Chrome windows must be closed first.
+    echo.
+    set /p RESTART="Would you like to close Chrome and reopen it with port 9222? (Y/N): "
+    if /i "%RESTART%"=="Y" (
+        echo Closing Chrome...
+        taskkill /f /im chrome.exe >nul 2>nul
+        timeout /t 2 >nul
+    )
+)
+
+echo Starting Chrome on port 9222 with session restore...
+start "" %CHROME_PATH% --remote-debugging-port=9222 --restore-last-session "https://academy.dadb.com"
 echo.
-echo [SUCCESS] Chrome launched!
-echo Please log in to your DADB Academy account and open your course.
-echo Once the course is on your screen, run "start.bat" or type "npm start".
+echo [SUCCESS] Chrome launched with port 9222 enabled!
+echo Make sure your course player is open, then run "start.bat" or "node index.js".
 echo.
-timeout /t 5
+timeout /t 4
