@@ -4,6 +4,7 @@
   "description": "Autonomous Natural Course Completion Engine for DADB Academy / LearnWorlds (IoT, Industry 4.0, Robotics).",
   "main": "index.js",
   "scripts": {
+    "setup": "cmd /c install.bat",
     "start": "node index.js",
     "engine": "node src/engine.js",
     "launch-chrome": "cmd /c launch-chrome.bat"

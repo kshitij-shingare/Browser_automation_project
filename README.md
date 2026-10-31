@@ -43,7 +43,20 @@ git clone https://github.com/kshitij-shingare/Browser_automation_project.git
 
 ---
 
-### 🌐 Step 2: Start Google Chrome with Remote Debugging
+### 📦 Step 2: Install & Verify Dependencies
+Run the environment installer to check and configure Node.js, Google Chrome, and project files:
+
+#### Option A: One-Click Installer (Windows - Recommended)
+Double-click `install.bat`.
+
+#### Option B: Command Line
+```bash
+npm run setup
+```
+
+---
+
+### 🌐 Step 3: Start Google Chrome with Remote Debugging
 The automator interacts with Chrome via port `9222`.
 
 #### Option A: One-Click Launcher (Windows - Recommended)
@@ -64,7 +77,7 @@ Or in Command Prompt:
 
 ---
 
-### 🤖 Step 3: Start the Automator
+### 🤖 Step 4: Start the Automator
 
 You can run the automator via the **One-Click Runner** or the **Command Line**:
 
@@ -93,6 +106,7 @@ dadb-couse/
 │   ├── quiz-solver.js              # Comprehensive AI & heuristic quiz solver
 │   └── unit-handlers.js            # Video, Quiz, PDF, SCORM, and Nav drivers
 ├── index.js                        # CLI entry point
+├── install.bat                     # Windows one-click dependency & environment installer
 ├── launch-chrome.bat               # Windows one-click Chrome launcher
 ├── start.bat                       # Windows one-click automator runner
 ├── package.json                    # Project definition & metadata
