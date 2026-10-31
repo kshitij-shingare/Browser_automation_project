@@ -74,6 +74,27 @@ async function runEngine() {
     console.log(`[TYPE] Video: ${state.hasVideo}, Quiz: ${state.isQuiz}, PDF: ${state.isPdf}, SCORM: ${state.isScorm}, PrereqLock: ${state.hasPrereq}`);
     console.log(`-----------------------------------------------------`);
 
+    // If on a non-course page (e.g. login or home screen), guide the user
+    if (!state.hasVideo && !state.isQuiz && !state.isPdf && !state.isScorm && !state.url.includes('path-player')) {
+      console.log(`\n[WAITING FOR COURSE] Current tab is not inside the course player.`);
+      console.log(`[ACTION REQUIRED] Please log into your DADB Academy account in Chrome and open your course!`);
+      console.log(`[SCANNING] Waiting for course player to be opened...\n`);
+
+      try {
+        const checkTarget = await findCourseTarget(config);
+        if (checkTarget && checkTarget.webSocketDebuggerUrl !== cdp.wsUrl && checkTarget.url.includes('path-player')) {
+          console.log(`[DETECTED] Found course player tab: "${checkTarget.title}" (${checkTarget.url})`);
+          cdp.close();
+          cdp.wsUrl = checkTarget.webSocketDebuggerUrl;
+          await cdp.connect();
+          console.log('[RECONNECTED] Attached to course player successfully.\n');
+        }
+      } catch (e) {}
+
+      await sleep(5000);
+      continue;
+    }
+
     if (state.progress === '100 %') {
       console.log('\n=====================================================');
       console.log('   🎉 CONGRATULATIONS! COURSE IS 100% COMPLETE! 🎉');

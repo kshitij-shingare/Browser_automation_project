@@ -8,6 +8,7 @@ yarn-error.log*
 *.log
 .temp/
 scratch/
+.chrome_profile/
 
 # OS metadata
 .DS_Store

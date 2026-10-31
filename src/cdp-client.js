@@ -101,6 +101,10 @@ async function findCourseTarget(config) {
   try {
     const res = await fetch(url);
     const pages = await res.json();
+    // Prioritize active path-player course player tab
+    const playerPage = pages.find(p => p.url && p.url.includes('path-player'));
+    if (playerPage) return playerPage;
+
     const page = pages.find(p => p.url && p.url.includes(config.cdp.targetPattern));
     if (!page) {
       throw new Error(`Target tab matching "${config.cdp.targetPattern}" not found in Chrome! Please ensure course is open.`);

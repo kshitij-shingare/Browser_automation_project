@@ -34,7 +34,7 @@ if %ERRORLEVEL% equ 0 (
 )
 
 echo Starting Chrome on port 9222 with session restore...
-start "" %CHROME_PATH% --remote-debugging-port=9222 --restore-last-session "https://academy.dadb.com"
+start "" %CHROME_PATH% --remote-debugging-port=9222 --user-data-dir="%~dp0.chrome_profile" --restore-last-session "https://academy.dadb.com"
 echo.
 echo [SUCCESS] Chrome launched with port 9222 enabled!
 echo Make sure your course player is open, then run "start.bat" or "node index.js".

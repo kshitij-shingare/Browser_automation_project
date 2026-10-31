@@ -28,6 +28,7 @@ The **DADB Academy Course Automator** is an enterprise-grade automation framewor
   - Robotics: Kinematics (forward/inverse), Dynamics, SCARA, Articulated, Cobots, Cartesian Systems
 - **Modal Confirmations**: Automatically handles confirmation dialogs (`iziToast` modals on Intermediate and Final Exams).
 - **Multi-Tier Navigation**: Uses iframe controls, top-bar navigation, and sidebar sequence fallbacks for 100% reliable unit transitions.
+- **Dynamic Path-Player Detection & Auto-Reconnection**: Seamlessly discovers and attaches to the active `path-player` course tab and auto-reconnects if the user switches or logs in.
 - **Zero External Dependencies**: Operates entirely on standard Node.js (v18+) using native global `WebSocket` and `fetch` APIs. No `npm install` required!
 
 ---
@@ -37,7 +38,7 @@ The **DADB Academy Course Automator** is an enterprise-grade automation framewor
 ### 📁 Step 1: Copy or Transfer the Project
 Simply copy this entire folder to your other laptop, or clone your repository:
 ```bash
-git clone https://github.com/kshitij-shingare/dadb-course-automator.git
+git clone https://github.com/kshitij-shingare/Browser_automation_project.git
 ```
 
 ---
@@ -45,15 +46,19 @@ git clone https://github.com/kshitij-shingare/dadb-course-automator.git
 ### 🌐 Step 2: Start Google Chrome with Remote Debugging
 The automator interacts with Chrome via port `9222`.
 
-#### Option A: One-Click Launcher (Windows)
+#### Option A: One-Click Launcher (Windows - Recommended)
 Double-click `launch-chrome.bat`.
+> **Note for Modern Chrome (Chrome 136+):** Chrome requires a dedicated profile (`--user-data-dir`) when remote debugging is enabled. `launch-chrome.bat` automatically handles this using an isolated local `.chrome_profile`.
 
 #### Option B: Terminal Command
 Run in PowerShell / CMD:
 ```powershell
-chrome.exe --remote-debugging-port=9222 "https://academy.dadb.com"
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="$PWD\.chrome_profile" "https://academy.dadb.com"
 ```
-*(If `chrome.exe` is not in your PATH, use `"C:\Program Files\Google\Chrome\Application\chrome.exe"`)*.
+Or in Command Prompt:
+```cmd
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="%CD%\.chrome_profile" "https://academy.dadb.com"
+```
 
 > **Important:** In the Chrome window that opens, log into your DADB Academy account and navigate into your course until the video/lesson player is visible on screen.
 
