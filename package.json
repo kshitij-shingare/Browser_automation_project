@@ -1,0 +1,29 @@
+{
+  "name": "dadb-course-automator",
+  "version": "1.0.0",
+  "description": "Autonomous Natural Course Completion Engine for DADB Academy / LearnWorlds (IoT, Industry 4.0, Robotics).",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "engine": "node src/engine.js",
+    "launch-chrome": "cmd /c launch-chrome.bat"
+  },
+  "keywords": [
+    "dadb",
+    "learnworlds",
+    "course-automation",
+    "cdp",
+    "chrome-devtools-protocol",
+    "antigravity",
+    "iot-course"
+  ],
+  "author": {
+    "name": "Kshitij Shingare",
+    "email": "kshitijshingare49@gmail.com",
+    "url": "https://github.com/kshitij-shingare"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
