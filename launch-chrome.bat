@@ -39,4 +39,4 @@ echo.
 echo [SUCCESS] Chrome launched with port 9222 enabled!
 echo Make sure your course player is open, then run "start.bat" or "node index.js".
 echo.
-ping -n 4 127.0.0.1 >nul
+timeout /t 4

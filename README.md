@@ -3,7 +3,7 @@
 > **Autonomous Natural Course Completion Engine for DADB Academy / LearnWorlds (`academy.dadb.com`)**  
 > **Author & Creator:** [Kshitij Shingare](https://github.com/kshitij-shingare)  
 > **Email:** kshitijshingare49@gmail.com  
-> **Built for:** Standalone CLI, Node.js, and Antigravity Agentic IDE  
+> **Built for:** Node.js (v18+) & Standalone CLI  
 
 ---
 
@@ -66,20 +66,12 @@ Or in Command Prompt:
 
 ### 🤖 Step 3: Start the Automator
 
-You can run the automator using **either Antigravity IDE** or the **Standalone Terminal**:
+You can run the automator via the **One-Click Runner** or the **Command Line**:
 
-#### Method A: Using Antigravity IDE (Recommended)
-1. Open this project folder in **Antigravity IDE**.
-2. Type any of the following natural language prompts in the chat:
-   - *"start dadb course"*
-   - *"complete my course"*
-   - *"run dadb automator"*
-3. Antigravity will automatically detect the workspace's `.agents/skills/dadb-course-automator` skill and `AGENTS.md` rules, verify Chrome, and launch the engine daemon in the background with continuous monitoring!
-
-#### Method B: Standalone One-Click Runner (Windows)
+#### Option A: One-Click Runner (Windows)
 Double-click `start.bat`.
 
-#### Method C: Command Line
+#### Option B: Command Line (PowerShell / CMD / Bash)
 ```bash
 node index.js
 ```
@@ -94,10 +86,6 @@ npm start
 
 ```text
 dadb-couse/
-├── .agents/
-│   └── skills/
-│       └── dadb-course-automator/
-│           └── SKILL.md            # Antigravity AI Custom Skill definition
 ├── src/
 │   ├── cdp-client.js               # Zero-dependency CDP WebSocket client
 │   ├── config.js                   # Speed, ports, and navigation settings
@@ -107,7 +95,6 @@ dadb-couse/
 ├── index.js                        # CLI entry point
 ├── launch-chrome.bat               # Windows one-click Chrome launcher
 ├── start.bat                       # Windows one-click automator runner
-├── AGENTS.md                       # Antigravity Workspace instructions
 ├── package.json                    # Project definition & metadata
 └── README.md                       # Documentation & guide
 ```
